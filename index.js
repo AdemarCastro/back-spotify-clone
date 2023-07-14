@@ -14,7 +14,7 @@ server.use(cors());
 // Habilitar o acesso CORS para a aplicação
 server.use(
   cors({
-    origin: process.env.ORIGIN,
+    origin: "https://deploy-clone-spotify-angular.vercel.app",
   })
 );
 
