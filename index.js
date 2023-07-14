@@ -9,14 +9,15 @@ dotenv.config();
 const server = express();
 server.use(bodyParser.json());
 server.use(express.json());
-server.use(cors());
+
+// Definir as opções de CORS
+const corsOptions = {
+  origin: 'https://deploy-clone-spotify-angular.vercel.app',
+  methods: ['GET', 'POST', 'PUT', 'DELETE']
+};
 
 // Habilitar o acesso CORS para a aplicação
-server.use(
-  cors({
-    origin: "https://deploy-clone-spotify-angular.vercel.app",
-  })
-);
+server.use(cors(corsOptions));
 
 // Parte de conexão com o Banco de Dados
 const db = mysql.createConnection({
