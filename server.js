@@ -1,7 +1,6 @@
 // Importando pacotes
 import dotenv from 'dotenv';
 import express from 'express';
-import cors from 'cors';
 import bodyParser from 'body-parser';
 import mysql from 'mysql2';
 
@@ -10,13 +9,23 @@ const server = express();
 server.use(bodyParser.json());
 server.use(express.json());
 
+// Importando o pacote CORS
+import cors from 'cors';
+
+// Configurando o CORS
+server.use(cors({
+  origin: '*',
+  methods: ['GET', 'POST', 'PUT', 'DELETE'],
+  headers: ['Authorization', 'Content-Type'],
+}));
+
 // Configurando o CORS de outra maneira
-server.use(function(req, res, next) {
+/* server.use(function(req, res, next) {
   res.header("Access-Control-Allow-Origin", "*");
   res.header("Access-Control-Allow-Methods", "*");
   res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
   next();
-});
+}); */
 
 const db = mysql.createConnection(process.env.DATABASE_URL)
 
@@ -123,7 +132,8 @@ server.get("/favoritos", (req, res) => {
     if (error) {
       console.log("Ocorreu um error ao tentar se conectar ao BD!");
     } else {
-      res.send({ status: true, data: result });
+      res.setHeader('Content-Type', 'application/json');
+      res.json({ status: true, data: result });
       console.log("Operação realizada com sucesso!");
     }
   });
