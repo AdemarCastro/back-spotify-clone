@@ -18,23 +18,7 @@ server.use(cors({
   headers: ['Authorization', 'Content-Type'],
 }));
 
-// Configurando o CORS de outra maneira
-/* server.use(function(req, res, next) {
-  res.header("Access-Control-Allow-Origin", "*");
-  res.header("Access-Control-Allow-Methods", "*");
-  res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
-  next();
-}); */
-
 const db = mysql.createConnection(process.env.DATABASE_URL)
-
-// // Parte de conexão com o Banco de Dados
-// const db = mysql.createConnection({
-//   host: process.env.DB_HOST,
-//   user: process.env.DB_USERNAME,
-//   password: process.env.DB_PASSWORD,
-//   database: process.env.DB_DBNAME
-// });
 
 db.connect(function (error) {
   if (error) {
