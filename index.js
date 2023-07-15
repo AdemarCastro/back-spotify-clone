@@ -10,6 +10,9 @@ const server = express();
 server.use(bodyParser.json());
 server.use(express.json());
 
+// Configuração CORS
+server.use(cors({ origin: '*' }));
+
 // Parte de conexão com o Banco de Dados
 const db = mysql.createConnection({
   host: process.env.DB_HOST,
