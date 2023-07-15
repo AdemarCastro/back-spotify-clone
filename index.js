@@ -3,14 +3,13 @@ import dotenv from 'dotenv';
 import express from 'express';
 import bodyParser from 'body-parser';
 import mysql from 'mysql2';
+import cors from 'cors';
 
 dotenv.config();
 const server = express();
 server.use(bodyParser.json());
 server.use(express.json());
 
-// Importando o pacote CORS
-import cors from 'cors';
 
 // Configurando o CORS
 server.use(cors({
