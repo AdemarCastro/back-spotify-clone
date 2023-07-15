@@ -10,8 +10,13 @@ const server = express();
 server.use(bodyParser.json());
 server.use(express.json());
 
-// Configuração CORS
-server.use(cors({ origin: '*' }));
+// Configurando o CORS de outra maneira
+server.use(function(req, res, next) {
+  res.header("Access-Control-Allow-Origin", "*");
+  res.header('Access-Control-Allow-Methods', '*');
+  res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
+  next();
+});
 
 // Parte de conexão com o Banco de Dados
 const db = mysql.createConnection({
