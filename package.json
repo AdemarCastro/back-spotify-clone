@@ -20,5 +20,12 @@
     "mysql": "^2.18.1",
     "mysql2": "^3.5.1",
     "nodemon": "^3.0.1"
+  },
+  "devDependencies": {
+    "@babel/cli": "^7.22.9",
+    "@babel/core": "^7.22.9",
+    "@babel/node": "^7.22.6",
+    "@babel/preset-env": "^7.22.9",
+    "babel-cli": "^6.26.0"
   }
 }

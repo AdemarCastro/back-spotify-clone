@@ -12,11 +12,7 @@ server.use(express.json());
 
 
 // Configurando o CORS
-server.use(cors({
-  origin: '*',
-  methods: ['GET', 'POST', 'PUT', 'DELETE'],
-  headers: ['Authorization', 'Content-Type'],
-}));
+
 
 const db = mysql.createConnection(process.env.DATABASE_URL)
 
